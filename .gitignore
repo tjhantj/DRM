@@ -1,0 +1,9 @@
+code/drm
+code/*.o
+output/
+.DS_Store
+*.swp
+__pycache__/
+
+# Exceeds Git LFS free quota (1 GB); host elsewhere (e.g., Zenodo)
+datasets/youtube/embedding.dat
