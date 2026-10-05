@@ -76,7 +76,7 @@ inline std::vector<int> run_mga(
             for (int d = 0; d < dim; d++) cent_c[d] = comm_sum_z[cid][d] * inv_c;
             double dist = vec_dist(cent_u.data(), cent_c.data(), dim);
             double g_d = g_interp(dist, bins, bin_averages);
-            if (g_mode == 3) return gamma * comm_count[cid] * g_d;  // nokk2m
+            if (g_mode == 3) return gamma * node_count[u] * comm_count[cid] * g_d;
             return gamma / G.two_m * node_sum_k[u] * comm_sum_k[cid] * g_d;
         };
 
@@ -93,7 +93,7 @@ inline std::vector<int> run_mga(
                 cent_c[d] = (comm_sum_z[cid][d] - node_sum_z[u][d]) * inv_c;
             double dist = vec_dist(cent_u.data(), cent_c.data(), dim);
             double g_d = g_interp(dist, bins, bin_averages);
-            if (g_mode == 3) return gamma * cnt * g_d;  // nokk2m
+            if (g_mode == 3) return gamma * node_count[u] * cnt * g_d;
             return gamma / G.two_m * node_sum_k[u] * sum_k_excl * g_d;
         };
 
